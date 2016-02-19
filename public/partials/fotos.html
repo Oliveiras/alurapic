@@ -1,6 +1,9 @@
-<!-- title -->
-<div class="jumbotron">
-    <h1 class="text-center">Alurapic</h1>
+<!-- menu -->
+<div class="row">
+    <div class="col-sm-12">
+        <a href="/fotos/new" class="btn btn-primary" type="button">Nova foto</a>
+        <hr>
+    </div>
 </div>
 
 <!-- filter -->
@@ -18,6 +21,6 @@
 <!-- image gallery -->
 <div class="row">
     <meu-painel titulo="{{foto.titulo}}" ng-repeat="foto in fotos | filter: filtro" class="painel-animado">
-        <img src="{{foto.url}}" alt="{{foto.titulo}}" class="img-responsive center-block">
+        <minha-foto titulo="{{foto.titulo}}" url="{{foto.url}}">
     </meu-painel>
 </div>

@@ -9,4 +9,15 @@ angular.module('minhasDiretivas', [])
 		},
 	};
 	return ddo;
+})
+.directive('minhaFoto', function() {
+	var ddo = {
+		restrict: 'AE',
+		templateUrl: 'js/directives/minha-foto.html',
+		scope: {
+			titulo: '@',
+			url: '@',
+		},
+	};
+	return ddo;
 });
