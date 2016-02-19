@@ -1,3 +1,8 @@
+<!-- mensagem de info/status -->
+<div class="row">
+    <p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
+</div>
+
 <!-- menu -->
 <div class="row">
     <div class="col-sm-12">
@@ -21,6 +26,8 @@
 <!-- image gallery -->
 <div class="row">
     <meu-painel titulo="{{foto.titulo}}" ng-repeat="foto in fotos | filter: filtro" class="painel-animado">
-        <minha-foto titulo="{{foto.titulo}}" url="{{foto.url}}">
+        <minha-foto titulo="{{foto.titulo}}" url="{{foto.url}}"></minha-foto>
+        <a href="/fotos/{{foto._id}}" class="btn btn-primary btn-block">Editar</a>
+        <button ng-click="remove(foto)" class="btn btn-danger btn-block">Remover</button>
     </meu-painel>
 </div>
