@@ -1,0 +1,89 @@
+<!-- titulo -->
+<div class="row">
+	<div class="page-header text-center">
+	    <h1>{{foto.titulo || 'Adicionar Foto'}}</h1>
+	</div>
+</div>
+
+<!-- mensagem de info/status -->
+<div class="row">
+	<p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
+</div>
+
+<!-- formulario -->
+<div class="row">
+	<form name="formulario" novalidate ng-submit="enviar()">
+	
+		<!-- lado esquerdo, editar -->
+	    <div class="col-md-6">
+	
+	    	<!-- titulo -->
+	        <div class="form-group">
+	            <label for="titulo">Título</label>
+	            <input 
+	            	name="titulo" 
+	            	ng-model="foto.titulo" 
+	            	required 
+	            	ng-maxlength="20" 
+	            	class="form-control" />
+	            <span 
+	            	ng-show="formulario.$submitted && formulario.titulo.$error.required" 
+	            	class="form-control alert alert-danger" >
+					Título é obrigatório.
+            	</span>
+	            <span 
+	            	ng-show="formulario.$submitted && formulario.titulo.$error.maxlength" 
+	            	class="form-control alert alert-danger" >
+					Título deve ter no máximo 20 caracteres.
+            	</span>
+	        </div>
+	
+	        <!-- url -->
+	        <div class="form-group">
+	            <label for="url">URL</label>
+	            <input name="url" ng-model="foto.url" required class="form-control">
+	            <span 
+	            	ng-show="formulario.$submitted && formulario.url.$error.required" 
+	            	class="form-control alert alert-danger" >
+					URL é obrigatória.
+            	</span>
+	        </div>
+	
+	        <!-- descricao -->
+	        <div class="form-group">
+	            <label>Descrição</label>
+	            <textarea name="descricao" class="form-control" ng-model="foto.descricao">
+	            </textarea>
+	        </div>
+
+	        <!-- categoria -->
+	        <div class="form-group">
+	        	<label for="grupo">Grupo</label>
+	        	<select 
+	        		name="grupo" 
+	        		required
+	        		class="form-control" 
+	        		ng-model="foto.grupo" 
+		        	ng-controller="CategoryController"
+		        	ng-options="grupo._id as (grupo.nome | uppercase) for grupo in grupos">
+		        	<option value="">Escolha um grupo</option>
+	        	</select>
+	        	<span 
+	        		ng-show="formulario.$submitted && formulario.grupo.$error.required" 
+	        		class="form-control alert-danger" >
+	        		Grupo obrigatório
+	        	</span>
+	        </div>
+			
+			<!-- botoes -->
+	        <button type="submit" class="btn btn-primary">Salvar</button>
+	         <a href="/" class="btn btn-primary">Voltar</a>
+	        <hr>
+	    </div>
+	
+	    <!-- lado direito, visualizar -->
+	    <div class="col-md-6">
+	        <responsive-image titulo="{{foto.titulo}}" url="{{foto.url}}"></responsive-image>
+	    </div>
+	</form>
+</div>

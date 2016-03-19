@@ -1,0 +1,33 @@
+<!-- mensagem de info/status -->
+<div class="row">
+    <p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
+</div>
+
+<!-- menu -->
+<div class="row">
+    <div class="col-sm-12">
+        <a href="/fotos/new" class="btn btn-primary" type="button">Nova foto</a>
+        <hr>
+    </div>
+</div>
+
+<!-- filter -->
+<div class="row">
+    <div class="col-sm-12">
+        <form class="inline-form" role="form">
+            <div class="form-group">
+                <label for="filter-field">Filtrar:</label>
+                <input type="search" id="filter-field" ng-model="filtro" ng-model-options="{debounce: 500}" class="form-control" placeholder="Filtrar imagens">
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- image gallery -->
+<div class="row">
+    <photo-panel titulo="{{foto.titulo}}" ng-repeat="foto in fotos | filter: filtro" class="painel-animado col-sm-3 col-md-2">
+        <responsive-image titulo="{{foto.titulo}}" url="{{foto.url}}"></responsive-image>
+        <a href="/fotos/{{foto._id}}" class="btn btn-primary btn-block">Editar</a>
+        <button ng-click="remove(foto)" class="btn btn-danger btn-block">Remover</button>
+    </photo-panel>
+</div>
