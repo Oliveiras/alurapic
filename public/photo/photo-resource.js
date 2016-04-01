@@ -1,5 +1,5 @@
 angular.module('alurapic')
-.factory('PhotoResource', function($resource) {
+.factory('photoResource', function($resource) {
 	return $resource('/v1/fotos/:fotoId', null, {
 		put: {
 			method: 'PUT',

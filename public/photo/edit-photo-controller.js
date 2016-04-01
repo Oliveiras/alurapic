@@ -1,12 +1,12 @@
 angular.module('alurapic')
-.controller('EditPhotoController', function($scope, $routeParams, PhotoResource) {
+.controller('editPhotoController', function($scope, $routeParams, photoResource) {
 
-	$scope.foto = {};
-	$scope.mensagem = '';
+	$scope.photo = {};
+	$scope.message = '';
 
 	// retrieve the photo, if updating
 	if ($routeParams.fotoId) {		
-		PhotoResource.get({fotoId: $routeParams.fotoId}).$promise
+		photoResource.get({fotoId: $routeParams.fotoId}).$promise
 		.then(function(foto) {
 			$scope.foto = foto;
 		})
